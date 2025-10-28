@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-
+//https://www.edaplayground.com/x/p5Dd
 module my_fifo #(parameter DATA_WIDTH=32,parameter FIFO_DEPTH=8)(
     input clk,
     input reset,
