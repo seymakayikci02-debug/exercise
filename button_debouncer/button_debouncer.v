@@ -12,7 +12,8 @@ module button_debouncer(
     
     reg [15:0] counter;
     wire Q1,Q2;
-
+    
+    /////////////////////////////////////////////////////////////////
     //Edge detect logic
     //This part make output button High when slow clock is in its second clock edge (t2) .
     //signal stays high only in the middle moment.
@@ -30,9 +31,10 @@ module button_debouncer(
        );
 
     
-    assign button_out = Q1 & (~Q2) ;
-    
-    
+    assign button_out = Q1 & (~Q2) ;        //1. clock cycle: Q1=0 Q2=0         Q1 &  ~Q2 = button_out= 0
+                                            //2. clock cycle: Q1=1 Q2=0         Q1 &  ~Q2 = button_out= 1
+                                            //3. clock cycle: Q1=1 Q2=1         Q1 &  ~Q2 = button_out= 0
+    ///////////////////////////////////////////////////////////////
     
     always @(posedge clk)
     begin
